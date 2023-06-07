@@ -108,11 +108,34 @@ alpine:3.12\
 
 
 
+## ingress
+
+部署两个服务，并使用负载均衡配置；
+
+
+
+![image-20230607190328354](./img/3.png)
+
+两个程序，在两个主机上同时存在；一模一样的目录；
 
 
 
 
 
+xxx.com -> success
+
+
+
+### 负载均衡 -> add Ingress
+
+
+
+* Ingress 相当于一个7层负载均衡器，理解为进行反代并定义规则的一个api对象， 
+* ingress Controller 通过监听 ingress api转化为各自的配置 （常用的有 nginx-ingress， trafik-ingress）
+
+
+
+![image-20230607185725635](/Users/ruanhan/Library/Application Support/typora-user-images/image-20230607185725635.png)
 
 
 
