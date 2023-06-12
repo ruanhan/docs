@@ -34,7 +34,7 @@ pod是所有业务类型的基础，也是k8s管理的最小单位级；
 
 #### NodePort 
 
->  (On every node), 所有主机端口均可访问
+>  (On every node), 所有主机（node，虚拟机）端口均可访问
 
 
 
@@ -55,7 +55,7 @@ curl 172.17.70:145:32163
 
 #### HostNode 
 
->  (Nodes running o pad) 仅pod所在主机端口可访问
+>  (Nodes running o pad) 仅pod所在主机（node，虚拟机）端口可访问
 
 
 
@@ -197,25 +197,26 @@ myconfig里面可以放很多key， key自己取名，value对应的是一个配
 
 
 
-
-
-## kubectl
-
-> kubectl 是k8s集群的命令行工具，通过kubectl能够对集群本身进行管理，并能够在集群上进行容器化应用的安装部署；
+## curl
 
 
 
-下载地址:
 
-GitHub.com/kubernetes/blob/master/CHANGELOG/CHANGELOG-1.18.md
+```md
+curl -H "Authorization:Bearer k8s" https://ai_dev:8443/api/v1/namespaces --insecure
+```
 
 
 
-### install
+* 访问services
 
-1. 把解压出来的kubectl移动到/usr/local/bin里面，或者任意在“环境变量”中且你喜欢的目录
-2. chmod+x kubectl 
-3. 执行kubectl version 看到版本代表安装成功；
+
+
+```md
+curl -H "Authorization:Bearer k8s" https://ai_dev:8443/api/v1/namespaces/aigc/services --insecure
+```
+
+
 
 
 

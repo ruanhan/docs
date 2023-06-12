@@ -67,15 +67,16 @@ function sidebarK8s() {
       collapsed: false,
       items: [
         { text: "概览", link: "/k8s/jicao1" },
-        { text: "API", link: "/k8s/introduction" },
+
+        { text: "kubectlAPI", link: "/k8s/kubectl" },
       ],
     },
     {
-      text: "项目手册",
+      text: "跃跃欲试",
       collapsed: false,
       items: [
-        { text: "项目介绍", link: "/k8s/introduction" },
-        { text: "项目介绍", link: "/k8s/introduction" },
+        { text: "install", link: "/k8s/install" },
+        { text: "overview", link: "/k8s/overview" },
       ],
     },
   ];
