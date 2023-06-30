@@ -24,7 +24,7 @@ function nav() {
   return [
     { text: "Rust", link: "/rust/introduction", activeMatch: "/rust/" },
     { text: "FE", link: "/fe/introduction", activeMatch: "/fe/" },
-    { text: "k8s", link: "/k8s/introduction", activeMatch: "/k8s/" },
+    { text: "k8s", link: "/k8s/jicao1", activeMatch: "/k8s/" },
   ];
 }
 
