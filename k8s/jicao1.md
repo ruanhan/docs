@@ -426,5 +426,112 @@ $systemctl daemon-reload && systemctl restart containerd
 
 
 
+## 10 reset 集群
+
+主机执行：
+
+ 驱散 kubectl drain jt2 --delete-local-data –force
+ kubectl delete nodes jtthink2
+
+reset (每台机器都要执行)
+sudo kubeadm reset
+sudo rm /etc/cni/net.d -fr
+
+sudo iptables -F
 
 
+
+* 开始安装
+
+sudo yum -y install kubelet-1.22.3  kubeadm-1.22.3  kubectl-1.22.3
+（两台机器都要执行）
+
+
+
+确认是否装好了
+
+rpm -aq kubelet kubectl kubeadm
+
+允许数据包转发(切换到root)
+#echo 1 > /proc/sys/net/ipv4/ip_forward
+#modprobe br_netfilter
+#echo 1 > /proc/sys/net/bridge/bridge-nf-call-iptables
+
+然后把kubelet 设置为开机启动
+#systemctl daemon-reload
+#systemctl enable kubelet
+
+
+
+* 初始化集群
+
+ kubeadm init --image-repository registry.cn-hangzhou.aliyuncs.com/google_containers  --kubernetes-version=1.22.3 --pod-network-cidr=10.244.0.0/16 --service-cidr=10.96.0.0/12 
+
+
+
+* 清楚主机污点
+
+kubectl taint nodes --all node-role.kubernetes.io/master-   (后面一个 – 是需要的)
+
+
+
+* worker
+
+kubeadm join 10.0.16.1:6443 --token reao0y.85hf17bt26qi1ix6 \
+	--discovery-token-ca-cert-hash sha256:73d6366f2ecee2278e95762f4481505f8c14e18abe2e3d2755136cf404ec7091
+
+
+
+## 安装flanneld
+
+
+
+docker load  < flanneld-v0.14.0-rc1-amd64.docker
+
+
+
+kubectl apply -f flannel.txt
+
+
+
+
+
+## 安装rancher
+
+
+
+docker run -itd --privileged  -p 9443:443 \
+-v /home/zeze/rancher:/var/lib/rancher \
+--restart=unless-stopped  -e CATTLE_AGENT_IMAGE="registry.cn-hangzhou.aliyuncs.com/rancher/rancher-agent:v2.5.5"  registry.cn-hangzhou.aliyuncs.com/rancher/rancher:v2.5.5
+
+
+
+* 查看
+
+docker ps | grep rancher
+
+
+
+
+
+kubectl create clusterrolebinding cluster-admin-binding --clusterrole cluster-admin --user  kubernetes-admin
+
+
+
+
+
+## 反代
+
+
+
+* 切换成 管理员（主机）
+
+
+
+kubectl proxy --address='0.0.0.0' --accept-hosts='^*$' --port=8009
+
+
+
+
+
+* http://zeze1:8009/version  即可访问
