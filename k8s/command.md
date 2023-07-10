@@ -94,7 +94,7 @@ kubectl exec -it myngxpod -c alpine -- sh
 
 
 
-## 配置数据卷：挂载主机目录
+### 配置数据卷：挂载主机目录
 
 
 
@@ -147,6 +147,14 @@ log.txt
 
 
 ## deployment
+
+
+
+### pod 和 deployment基本区别，创建deployment
+
+
+
+
 
 
 
