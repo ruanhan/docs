@@ -17,3 +17,95 @@
 
 `istioctl manifest apply --set profile=demo`
 
+
+
+```bash
+# istioctl manifest apply --set profile=demo
+This will install the Istio 1.13.8 demo profile with ["Istio core" "Istiod" "Ingress gateways" "Egress gateways"] components into the cluster. Proceed? (y/N) y
+✔ Istio core installed                                                                                                                          
+✔ Istiod installed                                                                                                                              
+✔ Egress gateways installed                                                                                                                     
+✔ Ingress gateways installed                                                                                                                    
+✔ Installation complete                                                                                                                         Making this installation the default for injection and validation.
+
+Thank you for installing Istio 1.13.  Please take a few minutes to tell us about your install/upgrade experience!  https://forms.gle/pzWZpAvMVBecaQ9h9
+```
+
+
+
+## start
+
+
+
+* 创建一个命名空间
+
+```bash
+kubectl create ns myistio
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
